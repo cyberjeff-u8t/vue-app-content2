@@ -1,28 +1,53 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
-</template>
+<div id="app">
+    
+      <v-container fluid>
+     <v-row align='end'>
+       <v-col class="text-center" >
+       <h1>Hello From VueJS</h1>
+       </v-col>
+     </v-row>     
+    <v-row >
+      <v-col class="text-center" cols="12">
+        <div class="my-2">
+          <v-btn small>Normal</v-btn>
+        </div>
+        <div class="my-2">
+          <v-btn small color="primary">Primary</v-btn>
+        </div>
+        <div class="my-2">
+          <v-btn small color="error">Error</v-btn>
+        </div>
+        <div class="my-2">
+          <v-btn small disabled>Disabled</v-btn>
+        </div>
+      </v-col>
+    </v-row>
+      </v-container>
+    
+</div>
 
+</template>
 <script>
-import HelloWorld from './components/HelloWorld.vue'
 
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
+
+  name: 'AppContent2',
+
+  props:{
+  
+  },
+ 
+  data: () => ({
+    
+  }),
 }
-</script>
+
+</script>   
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+    html { overflow-y: auto }
 </style>
+
+
+
