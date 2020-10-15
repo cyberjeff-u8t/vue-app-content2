@@ -29,20 +29,20 @@ const vuetify = new Vuetify({})
 Vue.use(VueRouter)
 Vue.use(Vuetify);
 
-const containerSelector = '#content'
-
+const appName = 'vue-app-content2';
 const vueLifecycles = singleSpaVue({
   Vue,
   appOptions: {
     vuetify,
     router,
-    el: containerSelector,
+    el: '#vue-app-content2',
     render(h) {
       return h(App, {
         props: {
           name: this.name,
           mountParcel: this.mountParcel,
-          singleSpa: this.singleSpa
+          singleSpa: this.singleSpa,
+          appMountElement: this.appMountElement
         },
       })
     }
@@ -50,14 +50,24 @@ const vueLifecycles = singleSpaVue({
 });
 
 export const bootstrap = vueLifecycles.bootstrap;
-export const mount = vueLifecycles.mount;
+
+//export const mount = vueLifecycles.mount;
+export function mount(props) {
+  createDomElement(props.appMountElement);
+  return vueLifecycles.mount(props);
+}
+
 export const unmount = vueLifecycles.unmount;
 
-export const devtools = {
-  overlays: {
-    selectors: [
-      containerSelector
-    ],
-  }
-};
+function createDomElement(shellElement) {
+  if(document.getElementById(appName))
+    return true;
 
+  let el = document.getElementById(shellElement);
+  if (el) {
+      let newdiv = document.createElement('div');
+      newdiv.id = appName;
+      el.appendChild(newdiv);
+  }
+  return true;
+}
